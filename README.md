@@ -48,23 +48,26 @@ python app.py
 
 Each singer document has the following set of fields.
 
-● singer_name_en: Name of the singer - English
-● singer_name_si: Name of the singer - Sinhala
-● birth_year: Birth year of the singer
-● death_year: Year the singer died (empty if still alive)
-● carrer_start_year: Year the singer started his/her singing career
-● career_end_year: Year the singer ended his/her singing career
-● gender: Gender
-● famous_songs_en: List of famous songs sung by the singer - English
-● famous_songs_si: List of famous songs sung by the singer - Sinhala
-● other_occupations_en: Other occupations of the singer (ex. songwriter) - English
-● other_occupations_si: Other occupations of the singer (ex. songwriter) - Sinhala
-● instruments_played_en: List of musical instruments the singer can play - English
-● instruments_played_si: List of musical instruments the singer can play - Sinhala
-● personal_life_en: Details about the singer’s personal life - English
-● personal_life_si: Details about the singer’s personal life - Sinhala
-● career_en: Details about the singer’s singing career - English
-● career_si: Details about the singer’s singing career - Sinhala
+```
+- singer_name_en: Name of the singer - English
+- singer_name_si: Name of the singer - Sinhala
+- birth_year: Birth year of the singer
+- death_year: Year the singer died (empty if still alive)
+- carrer_start_year: Year the singer started his/her singing career
+- career_end_year: Year the singer ended his/her singing career
+- gender: Gender
+- famous_songs_en: List of famous songs sung by the singer - English
+- famous_songs_si: List of famous songs sung by the singer - Sinhala
+- other_occupations_en: Other occupations of the singer (ex. songwriter) - English
+- other_occupations_si: Other occupations of the singer (ex. songwriter) - Sinhala
+- instruments_played_en: List of musical instruments the singer can play - English
+- instruments_played_si: List of musical instruments the singer can play - Sinhala
+- personal_life_en: Details about the singer’s personal life - English
+- personal_life_si: Details about the singer’s personal life - Sinhala
+- career_en: Details about the singer’s singing career - English
+- career_si: Details about the singer’s singing career - Sinhala
+
+```
 
 ## Indexing and Querying
 The standard Elasticsearch indexing methods (mapping) were used for indexing the data. When querying the data, the user’s intent is identified and the respective search query is executed. There are a few types of queries which are possible, and they are described in the following section. Also it is possible for the user to filter the retrieved results by gender.
