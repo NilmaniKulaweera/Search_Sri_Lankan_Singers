@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/results.css') }}">
+        <title>Sri Lankan Singers</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div style="background:transparent !important" class="jumbotron">
+                <div>
+                    <p class="search-title" style="color: #19b4a9">
+                        Search Sri Lankan Singers
+                    </p>
+                </div>
+            </div>
+
+            <form action="/search/results" method="post">
+                <div class="input-group search-box">
+                    {% if res.search_term %}
+                    <input type="text" class="form-control input-lg" name="input" placeholder="ටයිප් කරන්න..."
+                        value="{{res.search_term}}" autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="submit" name="form_1">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                    {% endif %}
+                    {% if not res.search_term %}
+                    <input type="text" class="form-control input-lg" name="input" placeholder="ටයිප් කරන්න..." autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="submit" name="form_1">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+
+            {% if res['no_phrase_query_results'] %}
+            <p>No results for phrase query. Hence searching without inverted commas.</p>
+            {% endif %}
+
+            {% if not res['no_result'] %}
+            <form action="/search/results/filter" method="post">
+                <div class="faceted-search">
+                    <p class="faceted-search-type">Filter by Gender</p>
+                    <div class="flex-container radiobuttons">
+                        {% for singer_gender in singer_genders %}
+                        <div>
+                            <input type="radio" name="name" value={{singer_gender.key}} id={{singer_gender.id}}
+                            />
+                            <label class="gender" for={{singer_gender.id}}>{{singer_gender.key}} ({{singer_gender.doc_count}})</label>
+                        </div>
+                        {% endfor %}
+                    </div>            
+                    <button class="btn-filter" type="submit" name="form_2">Filter</button>
+                </div>
+            
+                <div class="table-margin">
+                    <table class="table">
+                        <thead class="table-header">
+                            <tr>
+                                <td></td>
+                                <td><strong>Name (English)</strong></td>
+                                <td><strong>Name (Sinhala)</strong></td>
+                                <td><strong>Gender</strong></td>
+                                <td><strong>Birth Year</strong></td>
+                                <td><strong>Career Start Year</strong></td>
+                                <td><strong>Famous Songs</strong></td>
+                                <td><strong>Other Occupations</strong></td>
+                                <td><strong>Instruments Played</strong></td>
+                            </tr>
+                        </thead>
+
+                        {% for idx in range(res['singer_count']) %}
+                        <tbody class="table-body">
+                            <tr>
+                                <td>{{idx+1}}</td>
+                                <td><a href="{{ url_for('get_user_profile', id=idx) }}">
+                                    {{res['singers'][idx]['singer_name_en']}}</a></td>
+                                <td>{{res['singers'][idx]['singer_name_si']}}</td>
+                                <td>{{res['singers'][idx]['gender']}}</td>
+                                <td>{{res['singers'][idx]['birth_year']}}</td>
+                                <td>{{res['singers'][idx]['carrer_start_year']}}</td>
+                                <td>{{res['singers'][idx]['famous_songs_si']}}</td>
+                                <td>{{res['singers'][idx]['other_occupations_si']}}</td>
+                                <td>{{res['singers'][idx]['instruments_played_si']}}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </form>
+            {% endif %}
+
+            {% if res['no_result'] %}
+            <p>No results</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

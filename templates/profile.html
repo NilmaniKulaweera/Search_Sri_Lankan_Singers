@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sri Lankan Singers</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/results.css') }}">
+    </head>
+
+    <body>
+        <div>
+            <div>
+                <h1 class="search-title" style="text-align: center; color: #19b4a9">Singer Profile</h1>
+                <div class="basic_details">
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Full Name</strong></p>
+                        <p class="profile-content">{{res['singer_name_en']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>සම්පූර්ණ නම</strong></p>
+                        <p class="profile-content">{{res['singer_name_si']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Birth Year</strong></p>
+                        <p class="profile-content">{{res['birth_year']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Death Year</strong></p>
+                        <p class="profile-content">{{res['death_year']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Career Start Year</strong></p>
+                        <p class="profile-content">{{res['carrer_start_year']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Career End Year</strong></p>
+                        <p class="profile-content">{{res['career_end_year']}}</p>
+                    </div>
+                    <div class="basic_details_card">
+                        <p class="profile-title"><strong>Gender</strong></p>
+                        <p class="profile-content">{{res['gender']}}</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>Famous Songs</strong></p>
+                    <p class="profile-content">{{res['famous_songs_en']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>ප්‍රසිද්ධ ගීත</strong></p>
+                    <p class="profile-content">{{res['famous_songs_si']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>Other Occupations</strong></p>
+                    <p class="profile-content">{{res['other_occupations_en']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>වෙනත් වෘත්තීන්</strong></p>
+                    <p class="profile-content">{{res['other_occupations_si']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>Instruments Played</strong></p>
+                    <p class="profile-content">{{res['instruments_played_en']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>වාදනය කරන සංගීත භාණ්ඩ</strong></p>
+                    <p class="profile-content">{{res['instruments_played_si']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>Personal Life</strong></p>
+                    <p class="profile-content">{{res['personal_life_en']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>පෞද්ගලික ජීවිතය</strong></p>
+                    <p class="profile-content">{{res['personal_life_si']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>Career</strong></p>
+                    <p class="profile-content">{{res['career_en']}}</p>
+                </div>
+                <div class="card">
+                    <p class="profile-title"><strong>වෘත්තීය ජීවිතය</strong></p>
+                    <p class="profile-content">{{res['career_si']}}</strong></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

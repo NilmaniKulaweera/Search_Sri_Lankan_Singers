@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.table-margin {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.table-header {
+    font-size: 1em;
+}
+
+.table-body {
+    font-size: 0.85em;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.search-box {
+    margin-bottom: 30px;
+}
+
+.align-center {
+    margin-top: 13%;
+}
+
+.faceted-search {
+    margin: 5px;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.basic_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.basic_details_card {
+    flex-grow: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    padding: 5px;
+    padding-left: 10px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    padding-left: 10px;
+    margin: 5px;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.faceted-search-type {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.radiobuttons input[type=radio]{
+    display: none;
+}
+
+.gender{
+    background-color: #89dacb;
+    border-radius: 3px;
+    border: None;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+.radiobuttons input[type=radio]:checked + .gender{
+    background-color: #44918f;
+}
+
+.btn-filter{
+    border: None;
+    padding: 10px 30px 10px 30px;
+    color: white;
+    background-color: #004c50;
+    border-radius: 3px;
+    font-size: 14px;
+}

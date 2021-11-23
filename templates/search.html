@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/results.css') }}">
+        <title>Sri Lankan Singers</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="align-center">
+                <div style="background:transparent !important" class="jumbotron">
+                    <div>
+                        <p class="search-title" style="color: #19b4a9">
+                            Search Sri Lankan Singers
+                        </p>
+                    </div>
+                </div>
+                <form action="/search/results" method="post">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="input" placeholder="ටයිප් කරන්න..." autofocus>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
