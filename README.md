@@ -22,6 +22,7 @@ This is an information retrieval system built using Elasticsearch and Flask to s
         ├── results.css : css file used to style the UI
 ├── app.py : backend of the web app created using Flask
 ├── search.py : functions related to classifying user intent and elasticsearch queries
+├── queries.txt : list of some sample queries this search engine supports
 ```
 
 ## Project Setup
@@ -79,6 +80,7 @@ The standard Elasticsearch indexing methods (mapping) were used for indexing the
 
 - Text mining and text classification
     - The intent behind the query is identified. The user’s intent may be searching explicitly using a specific field. The following intents can be identified by the system.
+
 
     ```
     1. Field specific intent - After identifying the intent, the specific field is boosted.
