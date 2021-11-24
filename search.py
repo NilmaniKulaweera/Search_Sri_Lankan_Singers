@@ -39,8 +39,8 @@ def get_similarity(word, keywords):
 def intent_classifier(search_term):
     keywords_female = ["female", "lady", "ගායිකාවන්", "ගායිකාව", "ගායිකාවෝ", "ගැහැණු", "කාන්තා", "ස්ත්‍රී"]
     keywords_male = ["male", "පිරිමි"]
-    keywords_song = ["song", "sing", "sings", "sang", "සිංදුව", "ගීතය", "ගයන", "ගායනා", "ගැයුව", "ගැයූ", "ගයපු"]
-    keywords_instrument = ["play", "plays", "played", "වාදනය", "වයන", "වයන්න", "ගහන්න", "ගහපු"]
+    keywords_song = ["song", "sing", "sings", "sang", "singing", "සිංදුව", "සිංදුවේ", "ගීතය", "ගීතයේ", "ගයන", "ගායනා", "ගැයුව", "ගැයූ", "ගයපු"]
+    keywords_instrument = ["instrument", "play", "plays", "played", "වාදනය", "වයන", "වයන්න", "වයපු", "ගහන්න", "ගහපු", "ගහන"]
     keywords_occupation = ["career", "profession", "occupation", "job", "වෘත්තීය", "වෘත්තීයෙන්", "රැකියාව", "රැකියාවෙන්"]
     keywords_decade = ["decade", "decennary", "decennium", "දශකය", "දශකයේ", "දශක"]
 
@@ -95,7 +95,27 @@ def intent_classifier(search_term):
 
     result_word = ' '.join(result_words)
 
-    return is_intent_female, is_intent_male, is_intent_song, is_intent_instrument, is_intent_occupation, is_intent_decade, result_word
+    final_result_word = get_final_result_word(result_word)
+
+    # to support queries such as 'male singers'
+    if final_result_word == '':
+        final_result_word = search_term
+
+    return is_intent_female, is_intent_male, is_intent_song, is_intent_instrument, is_intent_occupation, is_intent_decade, final_result_word
+
+def get_final_result_word(result_word):
+    common_words = ["singers", "singer", "who", "can", "the", "a", "is", "has", "have", "are", "also", "too", 
+        "was", "were", "of", "ගායකයා", "ගායකයින්", "ගායකයන්", "කළ", "කරපු", "කරන", "කරන්න", "පුළුවන්", "ද",
+        "වන", "වෙන", "සිටි", "හිටපු"]
+
+    result_words = result_word.split()
+    final_result_words = []
+    for word in result_words:
+        if word not in common_words:
+            final_result_words.append(word)
+
+    final_result_word = ' '.join(final_result_words)
+    return final_result_word
 
 def search_all_fields(result_word, fields, gender_intent, gender_filter):
     must_array = [{ "multi_match": { "query": result_word, "fields": fields }}]
@@ -192,6 +212,9 @@ def boost_field(field):
     elif field == "occupation":
         boost_values[5] = 20
         boost_values[6] = 20
+    else:
+        boost_values[0] = 20
+        boost_values[1] = 20
         
     field1 ="singer_name_en^{}".format(boost_values[0])
     field2 = "singer_name_si^{}".format(boost_values[1])
@@ -401,7 +424,8 @@ def search(user_query, gender_filter=[]):
         results = normal_search(user_query, gender_filter)
         
     return post_processor(results, no_phrase_query_results)
+
     #show_results(results)
 
-# user_query = 'song hantanata payana'
+# user_query = 'singers of the 1990 decade'
 # search(user_query)

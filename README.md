@@ -42,7 +42,7 @@ cd Search_Sri_Lankan_Singers
 python app.py
 ```
 
-## Data fields
+## Data Fields
 
 Each singer document has the following set of fields.
 
